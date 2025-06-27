@@ -11,11 +11,20 @@ import Layout from './Layout/Layout';
 import Home from './pages/Home';
 import { theme } from './utils/constants/theme';
 import { ThemeProvider } from 'styled-components';
+import MoviesContext from './context/MoviesContext';
 
 function App() {
+  const [movies, setMovies] = useState([]);
+
+  const contextValue = {
+    movies,
+    setMovies
+  }
+
   return (
     <>
     <ThemeProvider theme={theme}>
+      <MoviesContext.Provider value={contextValue}>
         <Layout>
           <Routes>
             <Route path='/' element={<Home />}></Route>
@@ -26,6 +35,7 @@ function App() {
             <Route path='/movie/:id' element={<Detail/>}></Route>
           </Routes>
         </Layout>
+      </MoviesContext.Provider>
       </ThemeProvider>
     </>
   )

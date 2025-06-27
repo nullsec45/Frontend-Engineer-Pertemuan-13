@@ -7,6 +7,7 @@ const ENDPOINTS={
     NOWPLAYING:`${BASE_URL}/movie/now_playing?api_key=${API_KEY}`,
     TOPRATED:`${BASE_URL}/movie/top_rated?api_key=${API_KEY}`,
     TRENDING:`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`,
+    UPCOMING:`${BASE_URL}/movie/upcoming?api_key=${API_KEY}`,
 }
 
 export default ENDPOINTS;

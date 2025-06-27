@@ -79,7 +79,6 @@ const Detail = () => {
         const params=`?api_key=${API_KEY}&append_to_response=videos`;
         const URL=`https://api.themoviedb.org/3/movie/${id}/recommendations${params}`;
         const response=await axios(URL);
-        console.log(response);
         setMovies(response.data.results);
     }
 

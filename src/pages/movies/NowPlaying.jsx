@@ -1,9 +1,10 @@
-import React, {use, useEffect} from 'react'
+import React, {useEffect,useContext} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { Movies } from '../../components'
 import {Hero} from '../../components'
 import ENDPOINTS from '../../utils/constants/endpoints'
+import MoviesContext from '../../context/MoviesContext'
 
 
 const PageTitle=styled.h2`
@@ -16,7 +17,7 @@ const PageTitle=styled.h2`
 
 
 const NowPlaying = () => {
-  const [movies, setMovies] = React.useState([]);
+  const {setMovies}=useContext(MoviesContext);
 
   useEffect(() => {
       async function fetchPopularMovies(){
@@ -32,7 +33,7 @@ const NowPlaying = () => {
     <div>
       <Hero />
       <PageTitle>Now Playing Movies</PageTitle>
-      <Movies movies={movies} title="Now Playing Movies"/>
+      <Movies title="Now Playing Movies"/>
     </div>
   )
 }

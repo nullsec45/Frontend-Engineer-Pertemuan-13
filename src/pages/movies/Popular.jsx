@@ -1,9 +1,10 @@
-import React, {use, useEffect} from 'react'
+import React, {use, useContext, useEffect} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { Movies } from '../../components'
 import {Hero} from '../../components'
 import ENDPOINTS from '../../utils/constants/endpoints'
+import MoviesContext from '../../context/MoviesContext'
 
 
 const PageTitle=styled.h2`
@@ -16,11 +17,12 @@ const PageTitle=styled.h2`
 
 
 const Popular = () => {
-  const [movies, setMovies] = React.useState([]);
+  const {setMovies}=useContext(MoviesContext);
 
   useEffect(() => {
       async function fetchPopularMovies(){
         const response=await axios.get(ENDPOINTS.POPULAR);
+        console.log(response);
 
         setMovies(response.data.results);
       }
@@ -32,7 +34,7 @@ const Popular = () => {
     <div>
       <Hero />
       <PageTitle>Popular Movies</PageTitle>
-      <Movies movies={movies} title="Popular Movies"/>
+      <Movies  title="Popular Movies"/>
     </div>
   )
 }

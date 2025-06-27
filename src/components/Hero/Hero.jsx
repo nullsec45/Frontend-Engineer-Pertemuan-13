@@ -96,7 +96,6 @@ const Hero = () => {
       const params=`?api_key=${API_KEY}&append_to_response=videos`;
       const URL=`https://api.themoviedb.org/3/movie/${id}${params}`;
       const response=await axios(URL);
-      console.log(response);
       const dataGenres=response && response.data.genres.map((genre) => genre.name).join(', ');
       const dataIdTrailer=response && response.data.videos.results[0].key;
       setGenres(dataGenres);
